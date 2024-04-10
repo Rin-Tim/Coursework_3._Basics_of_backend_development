@@ -10,7 +10,7 @@ def open_json_file(file_path):
 
 
 def last_executed_five(operation_data):
-    """Выводит последние 5 операций на экран"""
+    """Сортирует и выводит последние 5 операций на экран"""
     list_executed = []
 
     for e in operation_data:
@@ -23,24 +23,37 @@ def last_executed_five(operation_data):
 
 
 def data_fix(date_):
+    """"""
     date_formate = date_['date']
     the_date = datetime.datetime.strptime(date_formate, '%Y-%m-%dT%H:%M:%S.%f')
     th_date = the_date.strftime('%d.%m.%Y')
     return th_date
 
-а = [1, 2, 3, 4, 5]
-print(len(a))
 
+def operation_from(operation):
+    """"""
+    operation_from = operation.get('from')
+    operation_to = operation.get('to')
 
-if c.get('from') in 'карта'
+    if operation_from:
+        parts = operation_from.split(' ')
+        numbers = parts[-1]
+        if len(numbers) == 16:
+            hidden_number = f"{numbers[:4]} {numbers[4:6]}** **** {numbers[-4:]}"
+            operation_from = f"{" ".join(parts[:-1])} {hidden_number}"
+        else:
+            operation_from = f'Счет **{numbers[-4:]}'
 
-# file_path = '../data/operations.json'
-# json_data = open_json_file(file_path)
-# a = last_executed_five(json_data)[:5]
-# for i in a:
-#     print(data_fix(i))
+    if operation_to:
+        parts = operation_to.split(' ')
+        numbers = parts[-1]
+        if len(numbers) == 16:
+            hidden_number = f"{numbers[:4]} {numbers[4:6]}** **** {numbers[-4:]}"
+            operation_to = f"{" ".join(parts[:-1])} {hidden_number}"
+        else:
+            operation_to = f'Счет **{numbers[-4:]}'
 
+    if operation_from == None:
+        operation_from = 'Отправитель не указан'
 
-# file_path = '../data/operations.json'
-# json_data = open_json_file(file_path)
-# print(json_data)
+    return f"{operation_from} -> {operation_to}"
