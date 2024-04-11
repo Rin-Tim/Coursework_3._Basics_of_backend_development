@@ -11,7 +11,7 @@ def open_json_file(file_path):
 
 def last_executed_five():
     """Сортирует и выводит последние 5 операций на экран"""
-    file_path = '../data/operations.json'  # Путь к файлу json
+    file_path = 'data\\operations.json'  # Путь к файлу json
     operation_data = open_json_file(file_path)
 
     list_executed = []
