@@ -1,5 +1,9 @@
+import os.path
+from config import ROOT_DIR
 import json
 import datetime
+
+PATH_OPERATIONS = os.path.join(ROOT_DIR, 'data', 'operations.json')
 
 
 def open_json_file(file_path):
@@ -11,7 +15,7 @@ def open_json_file(file_path):
 
 def last_executed_five():
     """Сортирует и выводит последние 5 операций на экран"""
-    file_path = 'data\\operations.json'  # Путь к файлу json
+    file_path = PATH_OPERATIONS  # Путь к файлу json
     operation_data = open_json_file(file_path)
 
     list_executed = []
@@ -30,7 +34,6 @@ def last_executed_five():
 
 def data_fix(date_):
     """Дата перевода представлена в формате ДД.ММ.ГГГГ (пример: 14.10.2018)"""
-
     date_formate = date_['date']
     the_date = datetime.datetime.strptime(date_formate, '%Y-%m-%dT%H:%M:%S.%f')
     th_date = the_date.strftime('%d.%m.%Y')

@@ -2,3 +2,5 @@
 курсач.md
 *.pyc
 *.log
+.coverage
+htmlcov
